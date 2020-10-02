@@ -219,6 +219,17 @@
             @csrf
           </form> --}}
 
+          
+          {{-- <li class="nav-header">Your account</li>
+          <li class="nav-item">
+            <a href="{{route('userprofile')}}" class="nav-link">
+              <i class="nav-icon far fa-circle text-info"></i>
+              <p>Profile</p>
+            </a>
+          </li><br><br> --}}
+
+
+
           <li class="nav-item">
             <a href="{{ route('logout') }}" class="nav-link">
               <i class="fas fa-sign-out-alt"></i>

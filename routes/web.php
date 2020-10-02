@@ -14,6 +14,7 @@
 use App\Http\Controllers\UserController;
 use Illuminate\Routing\Console\MiddlewareMakeCommand;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 //webpage route
 Route::get('/', 'FrontendController@home')->name('index');
 Route::get('/about', 'FrontendController@about')->name('about');
@@ -39,5 +40,8 @@ Route::group(['prefix'=>'admin', 'middleware'=>['auth']], function(){
     Route::resource('tag', 'TagController');
     Route::resource('post', 'PostController');
     Route::resource('user', 'UserController');
+    // Route::get('/profile', 'UserController@profile')->name('userprofile');
+    // Route::get('/edit_profile/{user}', 'UserController@edit_profile')->name('edit_profile');
+    // Route::get('/update_profile/{user}', 'UserController@update_profile')->name('update_profile');
 
 });

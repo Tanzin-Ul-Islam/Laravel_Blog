@@ -10,7 +10,7 @@
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="{{route('adminpanel')}}">Home</a></li>
-            <li class="breadcrumb-item active">Users</li>
+            <li class="breadcrumb-item active">User</li>
           </ol>
         </div><!-- /.col -->
       </div><!-- /.row -->
@@ -23,7 +23,7 @@
         <div class="col-lg-12">
             <div class="box-header">
                 <h5 class="box-title">User List 
-                <a href="{{route('user.create')}}" style="float:right;" 
+                    <a href="#" style="float:right;" 
                         class="btn btn-primary btn-sm">Create User</a></h5>
               </div>
             @include('inc.messages')
@@ -32,9 +32,8 @@
                   <tbody><tr>
                     <th style="width: 10px">#</th>
                     <th>Name</th>
-                    <th>email</th>
                     <th>Image</th>
-                    <th>Description</th> 
+                    <th>Email</th>
                     <th>Created At</th>
                     <th>Action</th>
                   </tr>
@@ -42,26 +41,36 @@
                   @foreach($users as $user)
                   <tr>
                     <td>{{$user->id}}</td>
-                    <td>{{$user->name}}</td>
+                  <td><a href="#" style="color:black">
+                    <strong>{{$user->name}}</strong></a></td>
+                    <td>
+                      @if($user->image == 'noimage.jpg')
+                      <img src="/storage/post_image/noimage.jpg" width="120px" height="80px"><br> 
+                      @else
+                      <img src="/storage/post_image/{{$user->image}}" width="120px" height="80px"><br>
+                      @endif
+                    </td>              
                     <td>{{$user->email}}</td>
-                    <td>image</td>
-                    <td>{{$user->description}}</td>
-                    <td>{{$user->created_at->format('M d, Y')}}</td>
-                    <td class="d-flex">
-                      <a href="#" class="btn btn-sm btn-success mr-1">
-                        <i class="fas fa-edit"></i></a>
-    
-                        <form action="#" method="POST" class="mr-1">
-                         @method('DELETE')
-                         @csrf
-                        <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')"> <i class="fas fa-trash"></i></button>
-                        </form>
-                    </td>
-                 </tr>
+                    <td>{{$user->created_at}}</td>
+
+                  <td class="d-flex">
+                    
+                    <a href="#" class="btn btn-sm btn-success mr-1">
+                    <i class="fas fa-edit"></i></a>
+
+                    <form action="#" method="POST" class="mr-1">
+                     @method('DELETE')
+                     @csrf
+                    <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')"> <i class="fas fa-trash"></i></button>
+                    </form>
+
+                  </td>
+                  
+                  </tr>
                   @endforeach
                   @else
                   <tr>
-                    <td colspan="6"><h4 class="text-center" style="color:red;">No User found!!</h4></td>
+                    <td colspan="8"><h4 class="text-center" style="color:red;">No User found!!</h4></td>
                   </tr>
                 @endif
 

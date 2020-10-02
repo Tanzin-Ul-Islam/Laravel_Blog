@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
-
 class UserController extends Controller
 {
     /**
@@ -14,7 +13,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users=User::latest()->paginate(20);
+        $users = User::orderBy('created_at', 'ASC')->get();
         return view('admin.user.index', compact(['users']));
     }
 
@@ -25,7 +24,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('admin.user.create');
+        //
     }
 
     /**

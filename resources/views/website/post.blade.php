@@ -9,7 +9,11 @@
               <h1 class="mb-4"><a href="#">{{$posts->title}}.</a></h1>
               <div class="post-meta align-items-center text-center">
                 <figure class="author-figure mb-0 mr-3 d-inline-block"><img src="{{asset('website')}}/images/person_1.jpg" alt="Image" class="img-fluid"></figure>
+                @if($posts->user)
                 <span class="d-inline-block mt-1">By {{$posts->user->name}}</span>
+                @else 
+                <span class="d-inline-block mt-1">User removed!</span>
+                @endif
                 <span>&nbsp;-&nbsp; {{$posts->published_at->format('M d, Y')}}</span>
               </div>
             </div>

@@ -22,7 +22,6 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::all();
-        //return $posts;
         return view('admin.post.index')->with('posts', $posts);
     }
 
@@ -68,9 +67,7 @@ class PostController extends Controller
             $path=$request->file('cover_pic')->storeAs('public/post_image', $filenametostore);
 
         }
-        else{
-            $filenametostore='noimage.jpg';
-        }
+       
 
         $post=new Post();
         $post->title=$request->input('post_name');
@@ -142,10 +139,7 @@ class PostController extends Controller
 
         $post->title=$request->input('post_name');
         $post->slug=Str::slug($request->post_name,'-');
-        if($request->hasfile('cover_pic'))
-            {
-                $post->image=$filenametostore;
-            }
+        $post->image=$filenametostore;
         $post->category_id=$request->input('post_category');
         $post->user_id=auth()->user()->id;
         $post->description=$request->input('description');

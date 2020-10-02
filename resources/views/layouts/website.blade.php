@@ -62,7 +62,7 @@
                 <li><a href="{{route('register')}}">Register</a></li>   
                 <li><a href="{{route('login')}}">Login</a></li>
                 @else
-                  <li><a href="{{ route('logout') }}"
+                  {{-- <li><a href="{{ route('logout') }}"
                      onclick="event.preventDefault();
                                    document.getElementById('logout-form').submit();">
                       {{ __('Logout') }}
@@ -70,7 +70,10 @@
 
                   <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                       @csrf
-                  </form>
+                  </form> --}}
+                  <li><a href="{{ route('logout') }}">Logout</a></li>
+
+
                 @endif   
               </ul>
             </nav>

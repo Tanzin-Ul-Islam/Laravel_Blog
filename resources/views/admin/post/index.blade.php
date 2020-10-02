@@ -60,7 +60,15 @@
                         <span class="badge badge-primary">{{$tag->name}}</span>
                       @endforeach
                     </td>
-                    <td>{{$post->User->name}}</td>
+
+                    <td>
+                      @if($post->user)
+                      {{$post->User->name}}
+                      @else 
+                      <span>User removed!</span>
+                      @endif
+                    </td>
+                    
                     <td>{{$post->published_at}}</td>
 
                   <td class="d-flex">

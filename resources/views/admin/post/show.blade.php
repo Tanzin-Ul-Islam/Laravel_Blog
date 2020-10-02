@@ -40,7 +40,13 @@
 
               <tr>
                 <th>Author</th>
-                <td>{{$post->User->name}}</td>
+                  <td> 
+                    @if($post->user)
+                    {{$post->User->name}}
+                    @else 
+                    <span>User removed!</span>
+                    @endif
+                  </td>
               </tr>
 
               <tr>
