@@ -23,7 +23,7 @@
         <div class="col-lg-12">
             <div class="box-header">
                 <h5 class="box-title">User List 
-                    <a href="#" style="float:right;" 
+                    <a href="{{route('user.create')}}" style="float:right;" 
                         class="btn btn-primary btn-sm">Create User</a></h5>
               </div>
             @include('inc.messages')
@@ -41,13 +41,13 @@
                   @foreach($users as $user)
                   <tr>
                     <td>{{$user->id}}</td>
-                  <td><a href="#" style="color:black">
+                  <td><a href="{{route('user.show', [$user->id])}}" style="color:black">
                     <strong>{{$user->name}}</strong></a></td>
                     <td>
-                      @if($user->image == 'noimage.jpg')
-                      <img src="/storage/post_image/noimage.jpg" width="120px" height="80px"><br> 
+                      @if($user->image == 'noimage')
+                      <img src="/storage/user_image/noimage.jpg" width="120px" height="80px"><br> 
                       @else
-                      <img src="/storage/post_image/{{$user->image}}" width="120px" height="80px"><br>
+                      <img src="/storage/user_image/{{$user->image}}" width="120px" height="80px"><br>
                       @endif
                     </td>              
                     <td>{{$user->email}}</td>
@@ -55,10 +55,10 @@
 
                   <td class="d-flex">
                     
-                    <a href="#" class="btn btn-sm btn-success mr-1">
+                    <a href="{{route('user.edit', [$user->id])}}" class="btn btn-sm btn-success mr-1">
                     <i class="fas fa-edit"></i></a>
 
-                    <form action="#" method="POST" class="mr-1">
+                    <form action="{{route('user.destroy', [$user->id])}}" method="POST" class="mr-1">
                      @method('DELETE')
                      @csrf
                     <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')"> <i class="fas fa-trash"></i></button>

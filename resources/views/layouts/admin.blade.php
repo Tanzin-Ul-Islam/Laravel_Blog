@@ -220,13 +220,13 @@
           </form> --}}
 
           
-          {{-- <li class="nav-header">Your account</li>
+          <li class="nav-header">Your account</li>
           <li class="nav-item">
             <a href="{{route('userprofile')}}" class="nav-link">
               <i class="nav-icon far fa-circle text-info"></i>
               <p>Profile</p>
             </a>
-          </li><br><br> --}}
+          </li><br><br>
 
 
 

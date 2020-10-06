@@ -20,7 +20,7 @@ Route::get('/', 'FrontendController@home')->name('index');
 Route::get('/about', 'FrontendController@about')->name('about');
 Route::get('/category', 'FrontendController@category')->name('category');
 Route::get('/contact', 'FrontendController@contact')->name('contact');
-Route::get('/post/{slug}', 'FrontendController@allpost')->name('post');
+
 
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
 
@@ -40,8 +40,10 @@ Route::group(['prefix'=>'admin', 'middleware'=>['auth']], function(){
     Route::resource('tag', 'TagController');
     Route::resource('post', 'PostController');
     Route::resource('user', 'UserController');
-    // Route::get('/profile', 'UserController@profile')->name('userprofile');
-    // Route::get('/edit_profile/{user}', 'UserController@edit_profile')->name('edit_profile');
-    // Route::get('/update_profile/{user}', 'UserController@update_profile')->name('update_profile');
+    Route::get('/post_details/{slug}', 'FrontendController@allpost')->name('post');
+    //profile
+    Route::get('/profile', 'ProfileController@index')->name('userprofile');
+    Route::get('/edit_profile/{user}', 'ProfileController@edit_profile')->name('edit_profile');
+    Route::put('/update_profile/{user}', 'ProfileController@update_profile')->name('update_profile');
 
 });

@@ -59,7 +59,7 @@
       @foreach($recentposts as $post)
       <div class="col-lg-4 mb-4">
         <div class="entry2">
-          <a href="{{route('post', ['slug'=>$post->slug])}}"><img src="/storage/post_image/{{$post->image}}" height="200px" width="350px"></a>
+           <a href="{{route('post', [$post->slug])}}"><img src="/storage/post_image/{{$post->image}}" height="200px" width="350px"></a>
           <div class="excerpt">
           <span class="post-category text-white bg-secondary mb-3">{{$post->category->name}}</span>
 
@@ -77,7 +77,9 @@
           </div>
           
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo sunt tempora dolor laudantium sed optio, explicabo ad deleniti impedit facilis fugit recusandae! Illo, aliquid, dicta beatae quia porro id est.</p>
-            <p><a href="#">Read More</a></p>
+ 
+            <p> <a href="{{route('post', [$post->slug])}}">Read More</a></p>
+
           </div>
         </div>
       </div>
@@ -95,7 +97,7 @@
     <div class="row align-items-stretch retro-layout">
 
       <div class="col-md-5 order-md-2">
-        <a href="single.html" class="hentry img-1 h-100 gradient"
+        <a href="{{route('post', [$endpostright[0]['slug']])}}" class="hentry img-1 h-100 gradient"
           style="background-image: url('/storage/post_image/{{$endpostright[0]['image']}}');">
       <span class="post-category text-white bg-danger">{{$endpostright[0]['category']['name']}}</span>
           <div class="text">
@@ -106,7 +108,7 @@
       </div>
 
       <div class="col-md-7">
-        <a href="single.html" class="hentry img-2 v-height mb30 gradient"
+        <a href="{{route('post', [$endposttop[0]['slug']])}}" class="hentry img-2 v-height mb30 gradient"
           style="background-image: url('/storage/post_image/{{$endposttop[0]['image']}}');">
           <span class="post-category text-white bg-success">{{$endposttop[0]['category']['name']}}</span>
           <div class="text text-sm">
@@ -116,7 +118,7 @@
         </a>
     
         <div class="two-col d-block d-md-flex">
-          <a href="single.html" class="hentry v-height img-2  gradient"
+          <a href="{{route('post', [$endpost1[0]['slug']])}}" class="hentry v-height img-2  gradient"
             style="background-image: url('/storage/post_image/{{$endpost1[0]['image']}}');">
             <span class="post-category text-white bg-primary">{{$endpost1[0]['category']['name']}}</span>
             <div class="text text-sm">
@@ -126,7 +128,7 @@
           </a>
          
           
-          <a href="single.html" class="hentry v-height img-2 ml-auto gradient"
+          <a href="{{route('post', [$endpost2[0]['slug']])}}" class="hentry v-height img-2 ml-auto gradient"
             style="background-image: url('/storage/post_image/{{$endpost2[0]['image']}}');">
             <span class="post-category text-white bg-warning">{{$endpost2[0]['category']['name']}}</span>
             <div class="text text-sm">
