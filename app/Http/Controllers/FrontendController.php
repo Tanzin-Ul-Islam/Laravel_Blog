@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\category;
 use Illuminate\Http\Request;
 use App\Post;
+use App\User;
+use App\Tag;
+use PDO;
 
 class FrontendController extends Controller
 {
@@ -32,8 +36,10 @@ class FrontendController extends Controller
     }
 
 
-    public function category(){
-        return view('website.category');
+    public function category($id){
+        $category = category::where('id',$id)->get();
+        $posts = Post::where('category_id', $id)->paginate(7);
+        return view('website.category', compact(['category', 'posts']));
     }
 
     public function contact(){
@@ -43,11 +49,24 @@ class FrontendController extends Controller
 
     public function allpost($slug){
         $posts=Post::where('slug', $slug)->first();
+        $popular_post = Post::inRandomOrder()->limit(3)->get();
+        $categories = category::all();
+        
+        $randompost = Post::inRandomOrder()->limit(4)->get();
+        $endpost1=$randompost->splice(0, 1);
+        $endpost2=$randompost->splice(0, 1); 
+        $endposttop=$randompost->splice(0, 1);
+        $endpostright=$randompost->splice(0, 1);
+        // $tags = Tag::all();
         if($posts){
-            return view('website.post', compact(['posts']));
+            return view('website.post', compact(['posts', 'popular_post', 'categories','endpost1','endpost2','endposttop','endpostright']));
         }
         else{
             return redirect('/');
         }
+    }
+
+    public function bloger_details(User $user){
+        return view('website.user_info', compact(['user']));
     }
 }

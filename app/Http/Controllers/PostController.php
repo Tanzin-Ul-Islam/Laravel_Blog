@@ -67,6 +67,10 @@ class PostController extends Controller
             $path=$request->file('cover_pic')->storeAs('public/post_image', $filenametostore);
 
         }
+        else{
+
+            $filenametostore='noimage';
+        }
        
 
         $post=new Post();
@@ -135,6 +139,10 @@ class PostController extends Controller
             
             $path=$request->file('cover_pic')->storeAs('public/post_image', $filenametostore);
 
+        }
+        else{
+
+            $filenametostore='noimage';
         }
 
         $post->title=$request->input('post_name');

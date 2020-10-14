@@ -51,7 +51,7 @@
 
               <tr>
                 <th>Category</th>
-                <td>{{$post->category->name}}</td>
+                <td> {{$post->category->name}}</td>
               </tr>
 
               <tr>

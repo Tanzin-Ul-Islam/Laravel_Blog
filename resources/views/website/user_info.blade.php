@@ -1,17 +1,10 @@
-@extends('layouts.admin')
+@extends('layouts.website')
 @section('content')
 
 <div class="content-header">
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-        </div><!-- /.col -->
-        <div class="col-sm-6">
-          <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="{{route('adminpanel')}}">Home</a></li>
-            <li class="breadcrumb-item"><a href="{{route('user.index')}}">User List</a></li>
-            <li class="breadcrumb-item active">User Details</li>
-          </ol>
         </div><!-- /.col -->
       </div><!-- /.row -->
     </div><!-- /.container-fluid -->
@@ -21,7 +14,7 @@
     <div class="card-body">
       <div class="box">
         <div class="box-header with-border">
-          <h3 class="box-title">User Information</h3>
+          <h3 class="box-title">Bloger Information</h3>
         </div>
         @include('inc.messages')
         <!-- /.box-header -->
@@ -43,6 +36,11 @@
               <tr>
                 <th>Name</th>
                 <td>{{$user->name}}</td>
+              </tr>
+
+              <tr>
+                <th>Email</th>
+                <td>{{$user->email}}</td>
               </tr>
               
               <tr>

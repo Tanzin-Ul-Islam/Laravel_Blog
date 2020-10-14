@@ -10,7 +10,7 @@
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="{{route('adminpanel')}}">Home</a></li>
-            <li class="breadcrumb-item active">User</li>
+            <li class="breadcrumb-item active">User List</li>
           </ol>
         </div><!-- /.col -->
       </div><!-- /.row -->

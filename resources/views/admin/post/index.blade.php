@@ -54,7 +54,13 @@
                       @endif
                     </td>
                     <td>{{$post->slug}}</td>
-                    <td>{{$post->category->name}}</td>
+                    <td>
+                      @if($post->category->name)
+                      {{$post->category->name}}
+                      @else 
+                      <h5>No Category!</h5>
+                      @endif 
+                    </td>
                     <td>
                       @foreach($post->tags as $tag)
                         <span class="badge badge-primary">{{$tag->name}}</span>

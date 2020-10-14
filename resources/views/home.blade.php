@@ -8,9 +8,8 @@
         @foreach($firstpost2 as $post)
         <a href="{{route('post', ['slug'=>$post->slug])}}" class="h-entry mb-30 v-height gradient"
           style="background-image: url('/storage/post_image/{{$post->image}}');">
-          <div class="text">
+          <div class="text"> 
             <h2>{{$post->title}}</h2>
-            
             <span class="date">{{$post->published_at->format('M d, Y')}}</span>
           </div>
         </a>
@@ -22,9 +21,11 @@
           style="background-image: url('/storage/post_image/{{$middlepost[0]['image']}}');">
           <div class="text">
             <div class="post-categories mb-3">
-                <a href="#">
+             
+                <a href="{{route('category', [$middlepost[0]['category']['id']])}}">
                   <span class="post-category bg-primary">{{$middlepost[0]['category']['name']}}</span>
                 </a>
+             
             </div>
             <h2>{{$middlepost[0]['title']}}</h2>
             <span class="date">{{$middlepost[0]['published_at']->format('M d, Y')}}</span>
@@ -61,14 +62,23 @@
         <div class="entry2">
            <a href="{{route('post', [$post->slug])}}"><img src="/storage/post_image/{{$post->image}}" height="200px" width="350px"></a>
           <div class="excerpt">
-          <span class="post-category text-white bg-secondary mb-3">{{$post->category->name}}</span>
-
+          <a href="{{route('category', [$post->category->id])}}"><span class="post-category text-white bg-secondary mb-3">{{$post->category->name}}</span></a>
           <h2><a href="single.html">{{$post->title}}</a></h2>
           <div class="post-meta align-items-center text-left clearfix">
-            <figure class="author-figure mb-0 mr-3 float-left"><img src="{{asset('website')}}/images/person_1.jpg" alt="Image" class="img-fluid"></figure>
-            
+             
             @if($post->user)
-            <span class="d-inline-block mt-1">By <a href="#">{{$post->user->name}}</a></span>
+              @if($post->user->image == 'noimage')
+              <figure class="author-figure mb-0 mr-3 float-left"><a href="{{route('bloger_details', [$post->user->id])}}"><img src="/storage/user_image/noimage.jpg" alt="Image" class="img-fluid"></a></figure>
+              @else 
+              <figure class="author-figure mb-0 mr-3 float-left"><a href="{{route('bloger_details', [$post->user->id])}}"><img src="/storage/user_image/{{$post->user->image}}" alt="Image" class="img-fluid"></a></figure>
+              @endif
+            @else 
+            <figure class="author-figure mb-0 mr-3 float-left"><img src="/storage/user_image/unknownuser.png" alt="Image" class="img-fluid"></figure>
+            @endif
+
+
+            @if($post->user)
+            <span class="d-inline-block mt-1">By <a href="{{route('bloger_details', [$post->user->id])}}">{{$post->user->name}}</a></span>
             @else
             <span class="d-inline-block mt-1">By <a href="#">user has been removed.</a></span>
             @endif
@@ -99,7 +109,7 @@
       <div class="col-md-5 order-md-2">
         <a href="{{route('post', [$endpostright[0]['slug']])}}" class="hentry img-1 h-100 gradient"
           style="background-image: url('/storage/post_image/{{$endpostright[0]['image']}}');">
-      <span class="post-category text-white bg-danger">{{$endpostright[0]['category']['name']}}</span>
+          <span class="post-category text-white bg-danger">{{$endpostright[0]['category']['name']}}</span>
           <div class="text">
             <h2>{{$endpostright[0]['title']}}</h2>
             <span>{{$endpostright[0]['published_at']->format('M d, Y')}}</span>
@@ -119,7 +129,7 @@
     
         <div class="two-col d-block d-md-flex">
           <a href="{{route('post', [$endpost1[0]['slug']])}}" class="hentry v-height img-2  gradient"
-            style="background-image: url('/storage/post_image/{{$endpost1[0]['image']}}');">
+            style="background-image: url('/storage/post_image/{{$endpost1[0]['image']}}');"> 
             <span class="post-category text-white bg-primary">{{$endpost1[0]['category']['name']}}</span>
             <div class="text text-sm">
               <h2>{{$endpost1[0]['title']}}</h2>

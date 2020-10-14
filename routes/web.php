@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Auth;
 //webpage route
 Route::get('/', 'FrontendController@home')->name('index');
 Route::get('/about', 'FrontendController@about')->name('about');
-Route::get('/category', 'FrontendController@category')->name('category');
+Route::get('/category/{id}', 'FrontendController@category')->name('category');
 Route::get('/contact', 'FrontendController@contact')->name('contact');
 
 
@@ -41,6 +41,7 @@ Route::group(['prefix'=>'admin', 'middleware'=>['auth']], function(){
     Route::resource('post', 'PostController');
     Route::resource('user', 'UserController');
     Route::get('/post_details/{slug}', 'FrontendController@allpost')->name('post');
+    Route::get('/Bloger_details/{user}', 'FrontendController@bloger_details')->name('bloger_details');
     //profile
     Route::get('/profile', 'ProfileController@index')->name('userprofile');
     Route::get('/edit_profile/{user}', 'ProfileController@edit_profile')->name('edit_profile');
