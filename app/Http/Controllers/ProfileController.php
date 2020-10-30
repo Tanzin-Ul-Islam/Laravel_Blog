@@ -46,7 +46,7 @@ class ProfileController extends Controller
 
         else{
 
-            $filenametostore='noimage';
+            $filenametostore=$user->image;
 
         }
 

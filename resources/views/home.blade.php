@@ -20,13 +20,6 @@
         <a href="{{route('post', ['slug'=>$middlepost[0]['slug']])}}" class="h-entry img-5 h-100 gradient"
           style="background-image: url('/storage/post_image/{{$middlepost[0]['image']}}');">
           <div class="text">
-            <div class="post-categories mb-3">
-             
-                <a href="{{route('category', [$middlepost[0]['category']['id']])}}">
-                  <span class="post-category bg-primary">{{$middlepost[0]['category']['name']}}</span>
-                </a>
-             
-            </div>
             <h2>{{$middlepost[0]['title']}}</h2>
             <span class="date">{{$middlepost[0]['published_at']->format('M d, Y')}}</span>
           </div>
@@ -62,7 +55,7 @@
         <div class="entry2">
            <a href="{{route('post', [$post->slug])}}"><img src="/storage/post_image/{{$post->image}}" height="200px" width="350px"></a>
           <div class="excerpt">
-          <a href="{{route('category', [$post->category->id])}}"><span class="post-category text-white bg-secondary mb-3">{{$post->category->name}}</span></a>
+          <a href="{{route('category', [$post->category->id])}}"><span class="post-category text-white bg-info mb-3">{{$post->category->name}}</span></a>
           <h2><a href="single.html">{{$post->title}}</a></h2>
           <div class="post-meta align-items-center text-left clearfix">
              

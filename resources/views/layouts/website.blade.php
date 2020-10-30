@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="{{asset('website')}}/css/aos.css">
 
     <link rel="stylesheet" href="{{asset('website')}}/css/style.css">
+    <link rel="stylesheet" href="{{asset('website')}}/css/dropdown.css">
   </head>
   <body>
   
@@ -44,20 +45,36 @@
           </div>
 
           <div class="col-4 site-logo">
+            <a href="{{route('index')}}" class="text-black h2 mb-0">
+              <img src="/storage/Logo/logo.jpg" width="80px" height="75px" class="rounded-circle" alt="Cinque Terre">
+            </a>
             <a href="{{route('index')}}" class="text-black h2 mb-0">Paradox</a>
           </div>
+  
 
           <div class="col-8 text-right">
             <nav class="site-navigation" role="navigation">
               <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block mb-0">
                 <li><a href="{{route('index')}}">Home</a></li>
-                @foreach($categories as $category)
-                <li><a href="{{route('category', [$category->id])}}">{{$category->name}}</a></li>
-                @endforeach          
                 <li class="d-none d-lg-inline-block"><a href="#" class="js-search-toggle"><span class="icon-search"></span></a></li>
+                
+                <li>
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-info">Categories</button>
+                    <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <div class="dropdown-menu">
+                      @foreach($categories as $category)
+                        <a href="{{route('category', [$category->id])}}" class="dropdown-item">{{$category->name}}</a>
+                      @endforeach  
+                    </div>
+                  </div>
+                </li>        
+
                 @if(Auth::guest())
-                <li><a href="{{route('register')}}">Register</a></li>   
-                <li><a href="{{route('login')}}">Login</a></li>
+                  <li><a href="{{route('register')}}">Register</a></li>   
+                  <li><a href="{{route('login')}}">Login</a></li>
                 @else
                   {{-- <li><a href="{{ route('logout') }}"
                      onclick="event.preventDefault();
@@ -68,10 +85,26 @@
                   <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                       @csrf
                   </form> --}}
-                  <li><a href="{{ route('logout') }}">Logout</a></li>
 
-
+                  <li>
+                    <div class="btn-group">
+                      <button type="button" class="btn">My Account</button>
+                      <button type="button" class="btn dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="sr-only">Toggle Dropdown</span>
+                      </button>
+                      <div class="dropdown-menu">
+                        @if(Auth::user()->user_type == 'admin')
+                          <a href="{{route('adminpanel')}}" class="dropdown-item">Admin Panel</a>
+                        @endif
+                        <a href="{{route('create_post')}}"  class="dropdown-item">Write Blogs</a>
+                        <a href="{{route('my_posts')}}"  class="dropdown-item">My Posts</a>
+                        <a href="{{route('my_profile')}}"  class="dropdown-item">Profile</a>
+                        <a href="{{ route('logout') }}"  class="dropdown-item">Logout</a>
+                      </div>
+                    </div>
+                  </li>
                 @endif   
+
               </ul>
             </nav>
             <a href="#" class="site-menu-toggle js-menu-toggle text-black d-inline-block d-lg-none"><span class="icon-menu h3"></span></a></div>

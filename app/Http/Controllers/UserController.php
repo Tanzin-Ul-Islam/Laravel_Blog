@@ -135,7 +135,7 @@ class UserController extends Controller
 
         else{
 
-            $filenametostore='noimage';
+            $filenametostore=$user->image;
         }
 
         $user->name = $request->input('user_name');

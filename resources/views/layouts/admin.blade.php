@@ -176,12 +176,12 @@
             </a>
           </li>
 
-          <li class="nav-item">
+          {{-- <li class="nav-item">
             <a href="{{route('tag.index')}}" class="nav-link">
                 <i class="fas fa-tags"></i>
                 <p>Tags</p>
               </a>
-            </li>
+            </li> --}}
 
             <li class="nav-item">
               <a href="{{route('post.index')}}" class="nav-link">
@@ -282,6 +282,5 @@
 <script src="{{asset('admin')}}/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="{{asset('admin')}}/js/adminlte.min.js"></script>
-
 </body>
 </html>

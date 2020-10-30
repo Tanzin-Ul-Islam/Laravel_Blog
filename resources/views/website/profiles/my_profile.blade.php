@@ -1,27 +1,11 @@
-@extends('layouts.admin')
+@extends('layouts.website')
 @section('content')
-
-<div class="content-header">
-    <div class="container-fluid">
-      <div class="row mb-2">
-        <div class="col-sm-6">
-          <h3 class="m-0 text-dark">Welcome {{$user->name}}</h3>
-        </div><!-- /.col -->
-        <div class="col-sm-6">
-          <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="{{route('adminpanel')}}">Home</a></li>
-            <li class="breadcrumb-item active">Profile</li>
-          </ol>
-        </div><!-- /.col -->
-      </div><!-- /.row -->
-    </div><!-- /.container-fluid -->
-</div>
 
 <div class="card card-primary card-outline">
     <div class="card-body">
       <div class="box">
         <div class="box-header with-border">
-          <h3 class="box-title">Profile Information</h3>
+          <h3 class="box-title">Welcome {{$user->name}}</h3>
         </div>
         @include('inc.messages')
         <!-- /.box-header -->
@@ -51,11 +35,6 @@
               </tr>
 
               <tr>
-                <th>User Type</th>
-                <td>{{$user->user_type}}</td>
-              </tr>
-
-              <tr>
                 <th>Description</th>
                 <td>{{$user->description}}</td>
               </tr>
@@ -66,7 +45,7 @@
               </tr>
             </tbody>
           </table>
-          <a href="{{route('edit_profile', [$user->id])}}" class="btn btn-success">Update Profile</a>
+          <a href="{{route('edit_myprofile', [$user->id])}}" class="btn btn-success">Update Profile</a>
         </div>     
       </div>
     </div>

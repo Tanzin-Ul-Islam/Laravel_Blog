@@ -142,7 +142,7 @@ class PostController extends Controller
         }
         else{
 
-            $filenametostore='noimage';
+            $filenametostore = $post->image;
         }
 
         $post->title=$request->input('post_name');

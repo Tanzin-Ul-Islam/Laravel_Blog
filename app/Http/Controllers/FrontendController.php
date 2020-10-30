@@ -67,6 +67,6 @@ class FrontendController extends Controller
     }
 
     public function bloger_details(User $user){
-        return view('website.user_info', compact(['user']));
+        return view('website.profiles.user_info', compact(['user']));
     }
 }
