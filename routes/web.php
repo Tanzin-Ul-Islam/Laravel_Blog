@@ -31,9 +31,7 @@ Auth::routes();
 //admin route
 Route::group(['prefix'=>'admin', 'middleware'=>['auth']], function(){
 
-    Route::get('/dashboard', function(){
-    return view('admin.dashboard.index');
-    })->name('adminpanel');
+    Route::get('/dashboard', 'FrontendController@admin_dashboard_info')->name('adminpanel');
 
     Route::resource('category', 'CategoryController');
     Route::resource('tag', 'TagController');

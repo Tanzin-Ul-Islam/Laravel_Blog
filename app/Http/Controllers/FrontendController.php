@@ -69,4 +69,11 @@ class FrontendController extends Controller
     public function bloger_details(User $user){
         return view('website.profiles.user_info', compact(['user']));
     }
+
+    public function admin_dashboard_info(){
+       $posts=count(Post::all());
+       $categories=count(category::all());
+       $users=count(User::all());
+       return view('admin.dashboard.index', compact(['posts', 'categories', 'users']));
+    }
 }

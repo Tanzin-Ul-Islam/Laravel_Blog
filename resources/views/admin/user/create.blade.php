@@ -22,7 +22,6 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-lg-12">
-
     <div class="box-body no-padding">
         <div class="row" style="margin-left:300px; ">
             <div class="col-lg-6" >
@@ -54,6 +53,17 @@
                       <input name="confirm_pass" value="{{old('confirm_pass')}}" class="form-control" type="password" placeholder="password">
                     </div>
 
+                    <div class="form-group">
+                      <label>User Type</label>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="user_type" value="admin">
+                        <label class="form-check-label">Admin</label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="user_type" value="user">
+                        <label class="form-check-label">User</label>
+                      </div>
+                    </div>
 
                     <div class="form-group">
                       <label>select Image</label> 

@@ -137,10 +137,9 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="#" class="brand-link">
-      <img src="{{asset('admin')}}/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-           style="opacity: .8">
-      <span class="brand-text font-weight-light">Admin Panel</span>
+    <a href="{{route('adminpanel')}}" class="brand-link">
+      <img src="/storage/Logo/logo.jpg" width="50px" height="45px" class="rounded-circle" alt="Cinque Terre">
+      <span class="brand-text font-weight-light">Paradox Admin Panel</span>
     </a>
 
     <!-- Sidebar -->
@@ -148,10 +147,14 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="/storage/user_image/{{Auth::user()->image}}" class="img-circle elevation-2" alt="User Image">
+          @if(Auth::user()->image != 'noimage')
+          <a href="{{route('userprofile')}}" class="d-block"><img src="/storage/user_image/{{Auth::user()->image}}" class="img-circle elevation-2" alt="User Image"></a>
+          @else
+          <a href="{{route('userprofile')}}" class="d-block"><img src="/storage/user_image/noimage.jpg" class="img-circle elevation-2" alt="User Image"></a>
+          @endif
         </div>
         <div class="info">
-          <a href="#" class="d-block">{{ Auth::user()->name }}</a>
+          <a href="{{route('userprofile')}}" class="d-block">{{ Auth::user()->name }}</a>
         </div>
       </div>
 

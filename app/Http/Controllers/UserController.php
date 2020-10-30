@@ -43,9 +43,13 @@ class UserController extends Controller
             'user_email'=> 'required|email',
             'user_pass'=> 'required|min:8',
             'confirm_pass'=> 'nullable',
+            'user_type'=> 'required',
             'cover_pic'=> 'image|nullable',
             'description'=> 'nullable'
         ]);
+
+        // print_r($request->input('user_type'));
+        // exit(); 
 
         if($request->hasfile('cover_pic'))
         {
@@ -69,7 +73,17 @@ class UserController extends Controller
         $user = new User();
         $user->name = $request->input('user_name');
         $user->email = $request->input('user_email');
-        $user->password = bcrypt($request->input('user_pass'));
+        
+        if($request->has('user_pass') && $request->input('user_pass') != null){
+            if($request->input('user_pass') == $request->input('confirm_pass')){
+                $user->password = bcrypt($request->input('user_pass'));
+            }
+            else{
+                return redirect()->back()->with('error','Password did not matched!!');
+            }
+
+        }
+        $user->user_type = $request->input('user_type');
         $user->image = $filenametostore;
         $user->description = $request->input('description');
         $user->slug = str::slug($request->user_name, '_') ;
@@ -115,6 +129,7 @@ class UserController extends Controller
             'user_email'=> 'required|email',
             'user_pass'=> 'nullable|min:8',
             'confirm_pass'=> 'nullable',
+            'user_type'=> 'required',
             'cover_pic'=> 'image|nullable',
             'description'=> 'nullable'
         ]);
@@ -150,7 +165,7 @@ class UserController extends Controller
             }
 
         }
-       
+        $user->user_type = $request->input('user_type');
         $user->image = $filenametostore;
         $user->description = $request->input('description');
         $user->slug = str::slug($request->user_name, '_') ;

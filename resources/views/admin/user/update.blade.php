@@ -56,6 +56,18 @@
                       <input name="confirm_pass" class="form-control" type="password" placeholder="password">
                     </div>
 
+                    <div class="form-group">
+                      <label>User Type</label>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="user_type" value="admin" @if($user->user_type == 'admin') checked @endif>
+                        <label class="form-check-label">Admin</label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="user_type" value="user" @if($user->user_type == 'user') checked @endif>
+                        <label class="form-check-label">User</label>
+                      </div>
+                    </div>
+
 
                     <div class="form-group">
                       <label>select Image</label> 
